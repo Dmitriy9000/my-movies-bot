@@ -6,7 +6,6 @@
         StartSearchMovie,
         SelectingMovieToDownload,
         StartDeleteMovie,
-        DeleteMovie,
         StartDeleteDownloadingMovie,
     }
 }

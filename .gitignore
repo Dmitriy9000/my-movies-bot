@@ -1,5 +1,7 @@
 target/
 **/latest_handled_date.txt
+MoviesBot/appsettings.Development.json
+MoviesBot/appsettings.Production.json
 
 *.swp
 *.*~

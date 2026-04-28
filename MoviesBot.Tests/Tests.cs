@@ -13,10 +13,10 @@ namespace MoviesBot.Tests
         {
             _sut = new TransmissionService(Options.Create<BotConfig>(new BotConfig
             {
-                TransmissionUrl = "http://192.168.4.121:9091/transmission/rpc",
-                TransmissionBaseDirectory = "/volume1/video/transmission-downloads",
-                TransmissionUsername = "asdf",
-                TransmissionPassword = "fdsa"
+                TransmissionUrl = "http://TRANSMISSION_HOST:9091/transmission/rpc",
+                TransmissionBaseDirectory = "/path/to/downloads",
+                TransmissionUsername = "TRANSMISSION_USERNAME",
+                TransmissionPassword = "TRANSMISSION_PASSWORD"
             }), null);
         }
 
@@ -55,7 +55,6 @@ namespace MoviesBot.Tests
         {
             var search = new PirateBayTorrentSearch();
             var torrents = search.GetMagnetByUrl("https://thepiratebay10.info/torrent/36183589/Harvey.Birdman.Attorney.At.Law.Complete.720P.WEB-DL");
-            ;
         }
     }
 }

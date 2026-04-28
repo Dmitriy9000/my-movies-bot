@@ -99,7 +99,7 @@ namespace MoviesBot.Services
 
                 var downloads = await _transmission.GetCompletedDownloads();
                 UserCache.UpdateLibrary(message.Chat.Id, downloads);
-                var formatedMessage = MessageFormating.FormatCompleteDownloadsMessage(downloads);
+                var formatedMessage = MessageFormatting.FormatCompleteDownloadsMessage(downloads);
 
                 return new string[] { formatedMessage, "Please enter movie number (or few numbers delimeted by spaces) to delete (0 for cancel):" };
             }
@@ -117,7 +117,7 @@ namespace MoviesBot.Services
 
                 var downloads = await _transmission.GetIncompleteDownloads();
                 UserCache.UpdateDownloading(message.Chat.Id, downloads);
-                var formatedMessage = MessageFormating.FormatIncompleteDownloadsMessage(downloads);
+                var formatedMessage = MessageFormatting.FormatIncompleteDownloadsMessage(downloads);
 
                 return new string[] { formatedMessage, "Please enter movie number (or few numbers delimeted by spaces) to delete (0 for cancel):" };
             }
@@ -242,7 +242,7 @@ namespace MoviesBot.Services
                     UserCache.UpdateSearch(message.Chat.Id, searchResult);
                     UserCache.UpdateState(message.Chat.Id, UserChatState.SelectingMovieToDownload);
 
-                    var formatedMessage = MessageFormating.FormatSearchResultMessage(searchResult);
+                    var formatedMessage = MessageFormatting.FormatSearchResultMessage(searchResult);
 
                     return new string[] { formatedMessage };
                 }
@@ -262,7 +262,7 @@ namespace MoviesBot.Services
             try
             {
                 var downloads = await _transmission.GetIncompleteDownloads();
-                var formatedMessage = MessageFormating.FormatIncompleteDownloadsMessage(downloads);
+                var formatedMessage = MessageFormatting.FormatIncompleteDownloadsMessage(downloads);
 
                 return new string[] { formatedMessage };
             }
@@ -324,7 +324,7 @@ namespace MoviesBot.Services
             try
             {
                 var downloads = await _transmission.GetCompletedDownloads();
-                var formatedMessage = MessageFormating.FormatCompletedDownloadsMessage(downloads);
+                var formatedMessage = MessageFormatting.FormatCompletedDownloadsMessage(downloads);
 
                 return new string[] { formatedMessage };
             }

@@ -48,7 +48,7 @@ namespace MoviesBot.Services
 
                 return result.Take(20).ToArray();
             }
-            catch ()
+            catch (Exception)
             {
                 throw;
             }
@@ -71,7 +71,7 @@ namespace MoviesBot.Services
                 return hrefValue;
 
             }
-            catch ()
+            catch (Exception)
             {
                 throw;
             }

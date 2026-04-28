@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc.Filters;
+using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using MoviesBot.Config;
@@ -20,23 +20,25 @@ namespace MoviesBot.Filters
         private class ValidateTelegramBotFilter : IActionFilter
         {
             private readonly string _secretToken;
+            private readonly ILogger<ValidateTelegramBotFilter> _logger;
 
-            public ValidateTelegramBotFilter(IOptions<BotConfig> options)
+            public ValidateTelegramBotFilter(IOptions<BotConfig> options, ILogger<ValidateTelegramBotFilter> logger)
             {
                 var botConfiguration = options.Value;
                 _secretToken = botConfiguration.SecretToken;
+                _logger = logger;
             }
 
             public void OnActionExecuted(ActionExecutedContext context)
             {
-                Console.WriteLine("Valid request, X-Telegram-Bot-Api-Secret-Token is good");
+                _logger.LogInformation("Valid request received");
             }
 
             public void OnActionExecuting(ActionExecutingContext context)
             {
                 if (!IsValidRequest(context.HttpContext.Request))
                 {
-                    Console.WriteLine("Invalid request, X-Telegram-Bot-Api-Secret-Token is invalid");
+                    _logger.LogWarning("Invalid request: X-Telegram-Bot-Api-Secret-Token is invalid");
 
                     context.Result = new ObjectResult("\"X-Telegram-Bot-Api-Secret-Token\" is invalid")
                     {

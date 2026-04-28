@@ -45,7 +45,7 @@ namespace MoviesBot.Services
             }
             catch (Exception e)
             {
-                _logger.LogError($"Unable to add torrent: {e.Message}", e);
+                _logger.LogError(e, "Unable to add torrent");
 
                 throw;
             }
@@ -76,7 +76,7 @@ namespace MoviesBot.Services
             }
             catch (Exception e)
             {
-                _logger.LogError($"Unable to get completed downloads torrent: {e.Message}", e);
+                _logger.LogError(e, "Unable to get completed downloads");
 
                 throw;
             }
@@ -107,7 +107,7 @@ namespace MoviesBot.Services
             }
             catch (Exception e)
             {
-                _logger.LogError($"Unable to get incomplete downlaods: {e.Message}", e);
+                _logger.LogError(e, "Unable to get incomplete downloads");
 
                 throw;
             }
@@ -122,7 +122,7 @@ namespace MoviesBot.Services
             }
             catch (Exception e)
             {
-                _logger.LogError($"Unable to delete torrent: {e.Message}", e);
+                _logger.LogError(e, "Unable to delete torrent");
 
                 throw;
             }

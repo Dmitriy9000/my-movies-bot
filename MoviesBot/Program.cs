@@ -46,10 +46,4 @@ app.MapBotWebhookRoute<BotController>(route: botConfiguration.Route);
 app.UseHttpLogging();
 app.MapControllers();
 
-using (var scope = app.Services.CreateScope())
-{
-
-
-}
-
 app.Run();
